@@ -1,6 +1,6 @@
 package com.Pawan.GfG;
 
-public class Min {
+public class Minimum_Element {
     public static void main(String[] args) {
 
         /*
