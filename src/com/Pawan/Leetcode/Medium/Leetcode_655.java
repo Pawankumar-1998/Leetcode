@@ -24,52 +24,59 @@ public class Leetcode_655 {
 
     static boolean checkPossibility(int[] nums){
         int n = nums.length;
-        int count =0;
-        int index = 0;
 
-        int posibility = 0;
+        int position = -1; // Assume no index in the array disturbs the criteria of ascending order
+
 
         for (int i = 0; i < n-1 ; i++) {
+//            if the current element is greater then the next element which violates the rules of ascending order
             if (nums[i]>nums[i+1]){
-                count++;
-            }
-        }
-
-        if (count==0){
-            return true;
-        } else if (count>1) {
-            return false;
-        } else {
-            for (int i = 0; i < n-1 ; i++) {
-                if (nums[i]>nums[i+1]){
-                    index = i;
-                    break;
+//                this will be true when you didn't find any index before which is disturbing the array so
+//                just return false
+                if (position!=-1){
+                    return false;
                 }
-            }
-            if (index==0){
-                posibility = posibility + 1;
-            }
-
-            if (index==n-2) {
-                posibility = posibility + 1;
-            }
-
-            if (nums[index-1]<=nums[index+1]) {
-                posibility = posibility + 1;
-            }
-
-            if (nums[index]<=nums[n+2]){
-                posibility = posibility + 1;
-            }
-
-            if (posibility==1){
-                return true;
-            } else {
-                return false;
+//                else just store the index the position
+                position = i;
             }
 
         }
 
+//      this condition will be true when there is no index which disturbes the array (i.e the given array -
+//        is all ready sorted )
+        if (position == -1) {
+            return true;
+        }
+
+//        if the index is first index that need to be changed then return true , which means it is the
+//        first index that is violating the rule so changing that index will give a ascending order array
+//        because all the elements to the right is already sorted
+        if (position == 0) {
+            return true;
+        }
+
+//        if the index is second last index that need to be changed then return true , which means it is the
+//        second last index that is violating the rule so changing that index will give a ascending order array
+//        because all the elements to the left  is already sorted
+        if (position == n - 2) {
+            return true;
+        }
+
+//      if the previous index and the index before are in ascending order then by changing the
+//        index will give you a ascending order array
+        if (nums[position - 1] <= nums[position + 1]) {
+            return true;
+        }
+
+//        if the index you are at and the index after 2 are at ascending order so the disturbing index is
+//        index + 1 so by changing it you will get ascending array
+        if (nums[position] <= nums[position + 2]) {
+            return true;
+        }
+//        if there are two index that spoils the array then it will return false or else the
+        else {
+            return false;
+        }
     }
 
 }
