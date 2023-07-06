@@ -17,36 +17,59 @@ public class Leetcode_655 {
 
          */
 
-        int[] arr = {-1,4,2,3};
+        int[] arr = {2,3,3,2,2};
         System.out.println(checkPossibility(arr));
 
     }
 
     static boolean checkPossibility(int[] nums){
         int n = nums.length;
+        int count =0;
+        int index = 0;
 
-        int ans = 0; // to store the difference between the bigger number in the middle and the last number
-        int index = 0; // to store the index number at which the bigger number lies
+        int posibility = 0;
 
-
-        for (int i = 0; i <=n-2 ; i++) {
-//            if this condition hits it means there is a number in between the array which violates the
-//            the ascending order
-            if (nums[i]>=nums[n-1]){
-                index = i; // store the index
-                ans = nums[i] - nums[n-1]; // difference between the largest number between and the last number
+        for (int i = 0; i < n-1 ; i++) {
+            if (nums[i]>nums[i+1]){
+                count++;
             }
         }
 
-        nums[index] = ans; // place the difference at the index
+        if (count==0){
+            return true;
+        } else if (count>1) {
+            return false;
+        } else {
+            for (int i = 0; i < n-1 ; i++) {
+                if (nums[i]>nums[i+1]){
+                    index = i;
+                    break;
+                }
+            }
+            if (index==0){
+                posibility = posibility + 1;
+            }
 
-//        checks if the array is in ascending order or not
-        for (int i = 0; i < n-1 ; i++) {
-            if (nums[i]>=nums[i+1]){
+            if (index==n-2) {
+                posibility = posibility + 1;
+            }
+
+            if (nums[index-1]<=nums[index+1]) {
+                posibility = posibility + 1;
+            }
+
+            if (nums[index]<=nums[n+2]){
+                posibility = posibility + 1;
+            }
+
+            if (posibility==1){
+                return true;
+            } else {
                 return false;
             }
+
         }
-        return true;
+
     }
 
 }
