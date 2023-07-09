@@ -13,7 +13,7 @@ public class Leetcode_655 {
 
         Input: nums = [4,2,3]
         Output: true
-        Explanation: You could modify the first 4 to 1 to get a non-decreasing array.
+        Explanation: You could modify the first 4 to 1 to get a non-decreasing array that is ascending order .
 
          */
 
