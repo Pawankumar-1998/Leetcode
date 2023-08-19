@@ -43,6 +43,9 @@ public class Leetcode_88 {
 //        this we need to put back the n number of elements in their place
 
 
+        /**
+         *
+         *
 //        inserting the elements back to the array 1 from the sorted array
         for (int i = 0; i < arr1.length ; i++){
             arr1[i] = newArray[i];
@@ -51,6 +54,21 @@ public class Leetcode_88 {
 //        inserting the elements back to the array 1 from the sorted array
         for (int i = 0; i < n; i++) {
             arr2[i] = newArray[m++];
+        }
+         *the above line of code is also applicable to return back the elements from the sorted array
+         * the original array
+         *
+         * the below line of code is bit optimal because we are using only one for loop
+         *
+         */
+
+
+        for (int i = 0; i < m+n; i++) {
+           if (i<m){
+               arr1[i] = newArray[i];
+           } else {
+               arr2[i-m] = newArray[i];
+           }
         }
 
     }
