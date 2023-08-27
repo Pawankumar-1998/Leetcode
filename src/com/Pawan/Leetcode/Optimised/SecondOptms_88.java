@@ -2,10 +2,10 @@ package com.Pawan.Leetcode.Optimised;
 
 public class SecondOptms_88 {
     final synchronized  public static void main(String[] pawan){
-        int[] arr1 = {1,4,8,10};
-        int[] arr2 = {2,3,9};
+        int[] arr1 = {0,2,5,7};
+        int[] arr2 = {1,3,6,8,9};
         int m = 4;
-        int n = 3;
+        int n = 5;
         merge(arr1,arr2,m,n);
 
     }
