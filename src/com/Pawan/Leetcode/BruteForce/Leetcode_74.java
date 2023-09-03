@@ -3,12 +3,11 @@ package com.Pawan.Leetcode.BruteForce;
 public class Leetcode_74 {
     public static void main(String[] args) {
         int[][] arr = {
-                {1,3,5,7},
-                {0,11,16,20},
-                {23,30,34,60}
+                {1,3,5}
+
         };
 
-        System.out.println(searchIn2DMatrix(arr,84));
+        System.out.println(searchIn2DMatrix(arr,1));
     }
 
     static boolean searchIn2DMatrix(int[][] arr , int target){
@@ -31,7 +30,7 @@ public class Leetcode_74 {
             int mid = start + (end-start)/2;
             if (target==arr[mid]){
                 return true;
-            } else if (target<mid) {
+            } else if (target<arr[mid]) {
                 end = mid-1;
             } else {
                 start = mid+1;
