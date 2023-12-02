@@ -17,29 +17,13 @@ public class Leetcode_1 {
         int[] ans = {-1,-1};
 
         for (int i = 0; i < arr.length-1; i++) {
-            int sum = arr[i];
-            int j = i+1;
-
-            while (j<arr.length){
-                sum = sum + arr[j];
-
-                if (sum==target){
+            for (int j = i+1; j < arr.length; j++) {
+                if (arr[i] + arr[j] == target){
                     ans[0] = i;
                     ans[1] = j;
                     return ans;
-                } else if (sum<target) {
-                    j++;
-                } else {
-                    sum = arr[i] + arr[j];
-                    if (sum == target){
-                        ans[0] = i;
-                        ans[1] = j;
-                        return ans;
-                    }
-                    j++;
                 }
             }
-
         }
         return ans;
     }
